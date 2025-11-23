@@ -4,6 +4,7 @@
 import { ref } from 'vue';
 import { searchArtist } from '../service/communicationManager.js';
 import ItemCard from '../components/ItemCard.vue'
+import SearchBar from '../components/SearchBar.vue'
 // ref per guardar el text de l'input
 const query = ref('')
 // ref per guardar els resultats
@@ -17,8 +18,7 @@ const handleSearch = async () => {
 
 <template>
   <h1>Search page</h1>
-  <input type="text" placeholder="buscant..." v-model="query" />
-    <button @click="handleSearch">Search</button>
+  <SearchBar v-model="query" @search="handleSearch" />
 
   <div v-if="results.length">
     <ItemCard 
